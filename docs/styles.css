@@ -1,0 +1,303 @@
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    overscroll-behavior-y: none;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden;
+    color: white;
+    height: 100%;
+}
+
+/* Sky background with time-of-day transition */
+.sky-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    background: linear-gradient(to bottom, #FF7F50, #6A5ACD); /* Default sunset gradient */
+    transition: background 1s ease;
+}
+
+/* Sun/Moon */
+.sun-moon {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #FDB813; /* Default sun color */
+    box-shadow: 0 0 50px #FDB813;
+    top: 10%;
+    left: 10%;
+    transition: background 1s ease, box-shadow 1s ease, transform 0.3s ease;
+    cursor: pointer !important;
+    z-index: 100;
+}
+
+.sun-moon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 70px #FDB813;
+}
+
+/* Cloud layers */
+.clouds-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.cloud-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    pointer-events: none;
+}
+
+#cloud-layer-1 {
+    background-image: url('assets/clouds/cloud-layer-1.png');
+    opacity: 0.7;
+    top: 15%;
+    z-index: 1;
+}
+
+#cloud-layer-2 {
+    background-image: url('assets/clouds/cloud-layer-2.png');
+    opacity: 0.6;
+    top: 25%;
+    z-index: 2;
+}
+
+#cloud-layer-3 {
+    background-image: url('assets/clouds/cloud-layer-3.png');
+    opacity: 0.8;
+    top: 35%;
+    z-index: 3;
+}
+
+/* Time indicator/scrubber */
+.time-indicator {
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    z-index: 200;
+    cursor: pointer;
+}
+
+.time-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.time-marker {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background: white;
+    border-radius: 50%;
+    left: -4px;
+    top: 0;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+    cursor: grab;
+    z-index: 201;
+    touch-action: none;
+    user-select: none;
+}
+
+.time-marker:active {
+    cursor: grabbing;
+}
+
+.time-section {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    left: -3px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.time-section:nth-child(2) {
+    top: 0%;
+}
+.time-section:nth-child(3) {
+    top: 25%;
+}
+.time-section:nth-child(4) {
+    top: 50%;
+}
+.time-section:nth-child(5) {
+    top: 75%;
+}
+.time-section:nth-child(6) {
+    top: 100%;
+}
+
+.time-section:hover {
+    background: white;
+}
+
+/* Content sections */
+.content {
+    position: relative;
+    z-index: 1;
+}
+
+.section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 10%;
+    position: relative;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+/* Navigation */
+.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.main-nav.visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 28px;
+    transition: color 0.3s, transform 0.3s;
+    display: inline-block;
+}
+
+.main-nav a:hover {
+    color: #FDB813;
+    transform: scale(1.1);
+}
+
+.close-nav {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.close-nav:hover {
+    transform: rotate(90deg);
+}
+
+/* Content styling */
+h1, h2 {
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    font-size: 3.5rem;
+}
+
+h2 {
+    font-size: 2.8rem;
+}
+
+p {
+    font-size: 1.5rem;
+    max-width: 600px;
+    line-height: 1.6;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .section {
+        padding: 0 5%;
+    }
+    
+    .sun-moon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .time-indicator {
+        right: 15px;
+        height: 200px;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    p {
+        font-size: 1.2rem;
+    }
+}
+
+/* Debug button styling */
+button {
+    padding: 10px 15px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 999;
+}
+
+button:hover {
+    background: rgba(50, 50, 50, 0.9);
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time-of-Day Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Sky background container -->
+    <div class="sky-container">
+        <div class="sun-moon" id="sun-trigger"></div>
+        
+        <!-- Cloud layers -->
+        <div class="clouds-container">
+            <div class="cloud-layer" id="cloud-layer-1"></div>
+            <div class="cloud-layer" id="cloud-layer-2"></div>
+            <div class="cloud-layer" id="cloud-layer-3"></div>
+        </div>
+        
+        <!-- Time of day indicator/scrubber -->
+        <div class="time-indicator">
+            <div class="time-track">
+                <div class="time-marker"></div>
+            </div>
+            <!-- Time sections markers -->
+            <div class="time-section" data-index="0"></div>
+            <div class="time-section" data-index="1"></div>
+            <div class="time-section" data-index="2"></div>
+            <div class="time-section" data-index="3"></div>
+            <div class="time-section" data-index="4"></div>
+        </div>
+    </div>
+    
+    <!-- Content sections -->
+    <main class="content">
+        <section id="intro" class="section" data-time="sunset" data-index="0">
+            <h1>Hi, I'm Robin</h1>
+            <p>Welcome to my interactive portfolio</p>
+        </section>
+        
+        <section id="skills" class="section" data-time="dusk" data-index="1">
+            <h2>My Skills</h2>
+            <!-- Skills content -->
+        </section>
+        
+        <section id="projects" class="section" data-time="night" data-index="2">
+            <h2>My Projects</h2>
+            <!-- Projects content -->
+        </section>
+        
+        <section id="hobbies" class="section" data-time="dawn" data-index="3">
+            <h2>My Hobbies</h2>
+            <!-- Hobbies content -->
+        </section>
+        
+        <section id="hire-me" class="section" data-time="sunrise" data-index="4">
+            <h2>Why Hire Me</h2>
+            <!-- Why hire me content -->
+        </section>
+    </main>
+    
+    <!-- Hidden navbar that reveals on sun click -->
+    <nav class="main-nav">
+        <div class="close-nav">&times;</div>
+        <ul>
+            <li><a href="#intro" data-index="0">Home</a></li>
+            <li><a href="#skills" data-index="1">Skills</a></li>
+            <li><a href="#projects" data-index="2">Projects</a></li>
+            <li><a href="#hobbies" data-index="3">Hobbies</a></li>
+            <li><a href="#hire-me" data-index="4">Hire Me</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Added manual test button at bottom of page -->
+    <button onclick="openMenu()" style="position: fixed; bottom: 20px; left: 20px; z-index: 999; padding: 10px;">
+        Open Menu (Test)
+    </button>
+
+    <!-- Added console inspection button -->
+    <button onclick="inspectElements()" style="position: fixed; bottom: 60px; left: 20px; z-index: 999; padding: 10px;">
+        Inspect Elements
+    </button>
+
+    <!-- Make sure to include all required GSAP scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
