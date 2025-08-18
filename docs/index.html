@@ -3,89 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Time-of-Day Portfolio</title>
+    <title>RobinTea</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Sky background container -->
-    <div class="sky-container">
-        <div class="sun-moon" id="sun-trigger"></div>
-        
-        <!-- Cloud layers -->
-        <div class="clouds-container">
-            <div class="cloud-layer" id="cloud-layer-1"></div>
-            <div class="cloud-layer" id="cloud-layer-2"></div>
-            <div class="cloud-layer" id="cloud-layer-3"></div>
-        </div>
-        
-        <!-- Time of day indicator/scrubber -->
-        <div class="time-indicator">
-            <div class="time-track">
-                <div class="time-marker"></div>
-            </div>
-            <!-- Time sections markers -->
-            <div class="time-section" data-index="0"></div>
-            <div class="time-section" data-index="1"></div>
-            <div class="time-section" data-index="2"></div>
-            <div class="time-section" data-index="3"></div>
-            <div class="time-section" data-index="4"></div>
-        </div>
+    <div class="effects-panel">
+        <div>h</div>
+        <div class="help-button" onclick="toggleHelp()">?</div>
     </div>
     
-    <!-- Content sections -->
-    <main class="content">
-        <section id="intro" class="section" data-time="sunset" data-index="0">
-            <h1>Hi, I'm Robin</h1>
-            <p>Welcome to my interactive portfolio</p>
-        </section>
-        
-        <section id="skills" class="section" data-time="dusk" data-index="1">
-            <h2>My Skills</h2>
-            <!-- Skills content -->
-        </section>
-        
-        <section id="projects" class="section" data-time="night" data-index="2">
-            <h2>My Projects</h2>
-            <!-- Projects content -->
-        </section>
-        
-        <section id="hobbies" class="section" data-time="dawn" data-index="3">
-            <h2>My Hobbies</h2>
-            <!-- Hobbies content -->
-        </section>
-        
-        <section id="hire-me" class="section" data-time="sunrise" data-index="4">
-            <h2>Why Hire Me</h2>
-            <!-- Why hire me content -->
-        </section>
-    </main>
-    
-    <!-- Hidden navbar that reveals on sun click -->
-    <nav class="main-nav">
-        <div class="close-nav">&times;</div>
-        <ul>
-            <li><a href="#intro" data-index="0">Home</a></li>
-            <li><a href="#skills" data-index="1">Skills</a></li>
-            <li><a href="#projects" data-index="2">Projects</a></li>
-            <li><a href="#hobbies" data-index="3">Hobbies</a></li>
-            <li><a href="#hire-me" data-index="4">Hire Me</a></li>
-        </ul>
-    </nav>
-    
-    <!-- Added manual test button at bottom of page -->
-    <button onclick="openMenu()" style="position: fixed; bottom: 20px; left: 20px; z-index: 999; padding: 10px;">
-        Open Menu (Test)
-    </button>
+    <div class="browser-container browser-closed" id="browser-container">
+        <div class="tab-bar">
+            <div class="tab active" data-tab-id="1">
+                <span class="tab-title">Menu</span>
+                <span class="tab-close" onclick="closeTab(1)">×</span>
+            </div>
+            <button class="new-tab-btn" onclick="openNewTab()">+</button>
+        </div>
+        <div class="content-area">
+            <!-- Content will be loaded here dynamically -->
+        </div>
+    </div>
 
-    <!-- Added console inspection button -->
-    <button onclick="inspectElements()" style="position: fixed; bottom: 60px; left: 20px; z-index: 999; padding: 10px;">
-        Inspect Elements
-    </button>
+    <div class="launch-screen" id="launch-screen" onclick="launchBrowser()">
+        <div>
+            <div class="globe-icon"></div>
+            <div class="launch-text">Press Space to start</div>
+        </div>
+    </div>
 
-    <!-- Make sure to include all required GSAP scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
-    <script type="module" src="script.js"></script>
+    <!-- Help Modal -->
+    <div class="help-modal" id="help-modal">
+        <div class="help-content">
+            <div class="help-close" onclick="toggleHelp()">×</div>
+            <h2>Keyboard Shortcuts</h2>
+            <ul class="shortcut-list">
+                <li><span class="shortcut-key">Y</span>/ <span class="shortcut-key">Space</span> Confirm</li>
+                <li><span class="shortcut-key">H</span> Toggle Help</li>
+                <li><span class="shortcut-key">C</span> Navigate up in menu</li>
+                <li><span class="shortcut-key">V</span> Navigate down in menu</li>
+                <li><span class="shortcut-key">S</span> Switch to next tab</li>
+                <li><span class="shortcut-key">A</span> Switch to previous tab</li>
+                <li><span class="shortcut-key">D</span> New Tab</li>
+                <li><span class="shortcut-key">F</span> Close Tab</li>
+                <li><span class="shortcut-key">X</span> Back to Menu</li>
+                <li><span class="shortcut-key">G</span> Toggle Old TV Effect</li>
+            </ul>
+            <p style="margin-top: 20px; font-size: 14px; color: #ccc;">
+                For combination shortcuts, hold the first key and press the second key as many times as needed.
+            </p>
+        </div>
+    </div>
+
+    <!-- Key Indicator -->
+    <div class="key-indicator" id="key-indicator"></div>
+
+    <!-- TV Effect Indicator -->
+    <div class="tv-indicator" id="tv-indicator">OLD TV MODE</div>
+
+    <script src="main.js"></script>
 </body>
 </html>

@@ -1,0 +1,487 @@
+<div class="page-content">
+    <div class="back-button" onclick="navigateToPage(activeTab, 'menu')">← Back to Menu</div>
+    
+    <div class="files-header">
+        <h2>FILES & RESOURCES</h2>
+        <p>Download for important documents and useful links</p>
+    </div>
+
+    <!-- Download Files Section -->
+    <div class="files-section">
+        <h3>DOWNLOAD FILES</h3>
+        <div class="files-grid">
+            <div class="file-card">
+                <div class="file-icon">
+                    <div class="icon-shape"></div>
+                </div>
+                <div class="file-info">
+                    <h4>Internship Contract IMS</h4>
+                    <p>if you wish to hire me, you must use this specific contract and sign it four times (government requirement). </p>
+                    <div class="file-meta">
+                        <span class="file-type">PDF</span>
+                        <span class="file-size">595 KB</span>
+                    </div>
+                </div>
+                <button class="download-btn" onclick="downloadFile('files/1.pdf', 'praktikumsvertrag_ims.pdf')">
+                    <span class="download-icon">↓</span> DOWNLOAD
+                </button>
+            </div>
+
+            <div class="file-card">
+                <div class="file-icon">
+                    <div class="icon-shape"></div>
+                </div>
+                <div class="file-info">
+                    <h4>Information for employers about IMS</h4>
+                    <p>Detailed Information for the Internship.</p>
+                    <div class="file-meta">
+                        <span class="file-type">PDF</span>
+                        <span class="file-size">308 KB</span>
+                    </div>
+                </div>
+                <button class="download-btn" onclick="downloadFile('files/2.pdf', 'reg_ims_richtlinien_zum_praxisjahr_1121.pdf')">
+                    <span class="download-icon">↓</span> DOWNLOAD
+                </button>
+            </div>
+
+            <div class="file-card">
+                <div class="file-icon">
+                    <div class="icon-shape"></div>
+                </div>
+                <div class="file-info">
+                    <h4>Information about the final exams</h4>
+                    <p>self-summerized overview of the System for the final exams</p>
+                    <div class="file-meta">
+                        <span class="file-type">PDF</span>
+                        <span class="file-size">257 KB</span>
+                    </div>
+                </div>
+                <button class="download-btn" onclick="downloadFile('files/3.png', 'bewertung_der_schlussprüfungen.pdf')">
+                    <span class="download-icon">↓</span> DOWNLOAD
+                </button>
+            </div>
+
+            <div class="file-card">
+                <div class="file-info">
+                    <h4><br><br><br>Something missing?<br></h4> <!-- yes this is hand aligned, I dont care anymore its 2am -->
+                    <p>Contact me via robin.taing@hotmail.com</p>
+                    <br>
+                    <br>
+                    <div class="file-meta">
+                        <span class="file-type">(⌐■_■)</span>
+                    </div>
+                </div>
+                <button class="download-btn" onclick="navigateToPage(activeTab, 'contact')"> To Contact</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- School Links Section -->
+    <div class="files-section">
+        <h3>OTHER LINKS</h3>
+        <div class="links-grid">
+            <a href="https://www.kanti-baden.ch/" target="_blank" class="school-link">
+                <div class="link-icon">
+                    <div class="link-shape"></div>
+                </div>
+                <div class="school-info">
+                    <h4>Kantonsschule Baden</h4>
+                    <p>My main school</p>
+                </div>
+                <div class="external-icon">→</div>
+            </a>
+
+            <a href="https://www.bbbaden.ch/" target="_blank" class="school-link">
+                <div class="link-icon">
+                    <div class="link-shape"></div>
+                </div>
+                <div class="school-info">
+                    <h4>BBB Berufsfackschule</h4>
+                    <p>Where I learn Computer Science</p>
+                </div>
+                <div class="external-icon">→</div>
+            </a>
+
+            <a href="https://github.com/RobinTea" target="_blank" class="school-link">
+                <div class="link-icon">
+                    <div class="link-shape"></div>
+                </div>
+                <div class="school-info">
+                    <h4>Github</h4>
+                    <p>the Projects on my</p>
+                </div>
+                <div class="external-icon">→</div>
+            </a>
+
+            <a href="https://ch.linkedin.com/in/robin-taing-7a8b56353" target="_blank" class="school-link">
+                <div class="link-icon">
+                    <div class="link-shape"></div>
+                </div>
+                <div class="school-info">
+                    <h4>Linkedin</h4>
+                    <p>My Linkedin</p>
+                </div>
+                <div class="external-icon">→</div>
+            </a>
+
+        </div>
+    </div>
+</div>
+
+<style>
+/* Files page specific styles that work within the browser container */
+.page-content {
+    color: #fff;
+    padding-bottom: 2rem;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.files-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: #111;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #333;
+}
+
+.files-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #333 0%, #666 50%, #333 100%);
+}
+
+.files-header h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: 2.2rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #fff;
+    border: none;
+}
+
+.files-header p {
+    margin: 0;
+    color: #ccc;
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+.files-section {
+    margin-bottom: 4rem;
+}
+
+.files-section h3 {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 1px;
+    position: relative;
+    padding-left: 1rem;
+    border-bottom: 2px solid #333;
+    padding-bottom: 0.5rem;
+}
+
+.files-section h3::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #fff;
+}
+
+.files-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.file-card {
+    background: #111;
+    border: 2px solid #333;
+    padding: 2rem;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    min-height: auto;
+    height: auto;
+}
+
+.file-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #fff;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.file-card:hover::before {
+    transform: translateX(0);
+}
+
+.file-card:hover {
+    border-color: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+}
+
+.file-icon {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.icon-shape {
+    width: 50px;
+    height: 60px;
+    background: #222;
+    border: 2px solid #fff;
+    position: relative;
+}
+
+.icon-shape::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -10px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid #fff;
+    border-bottom: 10px solid transparent;
+}
+
+.icon-shape::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    right: -8px;
+    width: 8px;
+    height: 8px;
+    background: #222;
+    border-bottom: 2px solid #fff;
+    border-right: 2px solid #fff;
+}
+
+.file-info h4 {
+    margin: 0 0 1rem 0;
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.file-info p {
+    margin: 0 0 1.5rem 0;
+    color: #ccc;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.file-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.file-type, .file-size {
+    background: #222;
+    border: 1px solid #444;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    color: #ccc;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.download-btn {
+    background: #fff;
+    color: #000;
+    border: 2px solid #fff;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    font-family: monospace;
+}
+
+.download-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0,0,0,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.download-btn:hover::before {
+    left: 100%;
+}
+
+.download-btn:hover {
+    background: #ccc;
+    transform: translateY(-2px);
+}
+
+.download-btn:active {
+    transform: translateY(0);
+}
+
+.download-icon {
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+
+.links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.school-link {
+    background: #111;
+    border: 1px solid #333;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.2s ease;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1rem;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    min-height: auto;
+}
+
+.school-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #fff;
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.school-link:hover::before {
+    transform: scaleY(1);
+}
+
+.school-link:hover {
+    border-color: #fff;
+    transform: translateX(5px);
+    text-decoration: none;
+    color: #fff;
+}
+
+.link-icon {
+    display: flex;
+    align-items: center;
+}
+
+.link-shape {
+    width: 30px;
+    height: 30px;
+    background: #222;
+    border: 2px solid #666;
+    transform: rotate(45deg);
+    position: relative;
+}
+
+.link-shape::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    width: 12px;
+    height: 12px;
+    border: 2px solid #666;
+    border-radius: 50%;
+}
+
+.school-info h4 {
+    margin: 0 0 0.5rem 0;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.school-info p {
+    margin: 0;
+    color: #ccc;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.external-icon {
+    font-size: 1.5rem;
+    color: #666;
+    font-weight: 900;
+    transition: transform 0.2s ease;
+}
+
+.school-link:hover .external-icon {
+    transform: translateX(3px);
+    color: #fff;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .files-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .links-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .files-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .file-card {
+        padding: 1.5rem;
+    }
+    
+    .school-link {
+        grid-template-columns: auto 1fr;
+        gap: 1rem;
+    }
+    
+    .external-icon {
+        grid-column: 2;
+        justify-self: end;
+        margin-top: 0.5rem;
+    }
+}
+</style>
