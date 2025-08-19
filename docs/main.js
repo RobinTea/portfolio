@@ -522,7 +522,6 @@ window.addEventListener('resize', checkTabLimit);
 document.addEventListener('DOMContentLoaded', function() {
     checkTabLimit();
     addDownloadStyles(); // Add download feedback styles
-
 });
 
 function toggleExplanation() {
