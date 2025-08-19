@@ -1,6 +1,542 @@
 <div class="page-content">
     <div class="back-button" onclick="navigateToPage(activeTab, 'menu')">← Back to Menu</div>
-    <h2>whoami</h2>
-    <p>Information about who I am...</p>
-    <p>Add your personal information here.</p>
+    
+    <div class="cv-header">
+        <h2>Curriculum Vitae</h2>
+        <p class="subtitle-hover" onclick="toggleExplanation()">LAWA MENA HAU LALA</p>
+    </div>
+
+    <div class="cv-container">
+        <div class="cv-profile">
+            <div class="profile-image-container">
+                <img src="./pages/pic/1.png" alt="Robin Taing" class="profile-image" />
+            </div>
+            
+            <div class="profile-info">
+                <h3>Robin Taing</h3>
+                <div class="profile-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Age:</span>
+                        <span class="detail-value">17 years</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Education Goal:</span>
+                        <span class="detail-value">Informatiker EFZ / Applikationsentwicklung</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">School:</span>
+                        <span class="detail-value">Kantonsschule Baden</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Status:</span>
+                        <span class="detail-value">Student and searching for an Apprenticeship</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cv-sections">
+            <div class="cv-section explanation-section" id="explanationSection" style="display: none;">
+                <h4>EXPLANATION</h4>
+                <div class="cv-content">
+                    <strong>LAWA MENA HAU LALA</strong><br>
+                    <span class="cv-description">
+                        "Keep moving forward, even if it means shedding blood."<br><br>
+                        • <strong>LAWA</strong> - to navigate or advance<br>
+                        • <strong>MENA</strong> - with purposeful direction<br>
+                        • <strong>HAU</strong> - spirit or burning passion<br>
+                        • <strong>LALA</strong> - blood<br><br>
+                        "LAWA MENA HAU LALA," a powerful expression from the Maluku region of Indonesia, embodies courage, persistence, and unwavering determination. 
+                        It is a call to advance with bravery and resilience, no matter the cost.<br><br>
+                        As someone passionate about computer science and actively searching for an Apprenticeship  (for 2026), I admire the Willpower and Passion from around the world, like from the Moluccan people. 
+                        Historically, this phrase was used during times of struggle and resistance, including the fight against colonial powers. 
+                    </span>
+                </div>
+            </div>
+
+            
+            <div class="cv-section">
+                <h4>AUSBILDUNG</h4>
+                <div class="cv-item">
+                    <div class="cv-year">2026 - 2027</div>
+                    <div class="cv-content">
+                        <strong>Informatiker EFZ</strong><br>
+                        ?<br>
+                        <span class="cv-description">last year of IMS with practical experience</span>
+                    </div>
+                </div>
+                <div class="cv-item">
+                    <div class="cv-year">2023 - 2026</div>
+                    <div class="cv-content">
+                        <strong>Computer Science</strong><br>
+                        BBB Berufsfachschule Baden<br>
+                        <span class="cv-description">Application development, Systems Engineering & co.</span>
+                    </div>
+                </div>
+                <div class="cv-item">
+                    <div class="cv-year">2023 - 2026</div>
+                    <div class="cv-content">
+                        <strong>BM (DE: Berufsmaturität)</strong><br>
+                        Kantonsschule Baden<br>
+                        <span class="cv-description">Focus on the Economy and Rights</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cv-section">
+                <h4>Language</h4>
+                <div class="language-grid">
+                    <div class="language-item">
+                        <span class="language-name">German</span>
+                        <span class="language-level">native language</span>
+                    </div>
+                    <div class="language-item">
+                        <span class="language-name">English</span>
+                        <span class="language-level">fluent (C1) / speaking (B2)</span>
+                    </div>
+                    <div class="language-item">
+                        <span class="language-name">French</span>
+                        <span class="language-level">basic knowledge (A2)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cv-footer">
+            <button class="more-button" onclick="showMoreInfo()">
+                <span class="more-text">LEARN MORE</span>
+                <span class="more-icon">→</span>
+            </button>
+        </div>
+    </div>
 </div>
+
+<style>
+/* CV page specific styles */
+.cv-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: #111;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #333;
+}
+
+.cv-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #333 0%, #666 50%, #333 100%);
+}
+
+.cv-header h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: 2.2rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #fff;
+}
+
+.cv-header p {
+    margin: 0;
+    color: #ccc;
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+.subtitle-hover {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+}
+
+.subtitle-hover:hover {
+    color: #000;
+    background: #c9c9c9;
+    font-weight: bold;
+    text-shadow: none;
+    transform: scale(1.01);
+}
+
+.cv-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.cv-profile {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: #111;
+    border: 2px solid #333;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    align-items: start;
+    min-height: auto;
+    height: auto;
+}
+
+.cv-profile::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #fff;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.cv-profile:hover::before {
+    transform: translateX(0);
+}
+
+.cv-profile:hover {
+    border-color: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+}
+
+.profile-image-container {
+    position: relative;
+    align-self: start;
+}
+
+.profile-image {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    background: #222;
+}
+
+.profile-info h3 {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.profile-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.detail-item {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #333;
+}
+
+.detail-label {
+    font-weight: 600;
+    color: #ccc;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.detail-value {
+    color: #fff;
+    font-weight: 400;
+}
+
+.cv-sections {
+    display: grid;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.cv-section {
+    background: #111;
+    border: 2px solid #333;
+    padding: 2rem;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    min-height: auto;
+    height: auto;
+}
+
+.cv-section::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #fff;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.cv-section:hover::before {
+    transform: translateX(0);
+}
+
+.cv-section:hover {
+    border-color: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+}
+
+.cv-section h4 {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.cv-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #333;
+}
+
+.cv-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.cv-year {
+    font-weight: 700;
+    color: #fff;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    background: #222;
+    padding: 0.5rem;
+    text-align: center;
+    border: 1px solid #444;
+    align-self: start;
+}
+
+.cv-content strong {
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.cv-content {
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.cv-description {
+    font-style: italic;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.skills-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.skill-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 1rem;
+    align-items: center;
+}
+
+.skill-name {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.skill-level {
+    background: #222;
+    height: 8px;
+    border: 1px solid #444;
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #fff 0%, #ccc 100%);
+    transition: width 1s ease-in-out;
+}
+
+.language-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.language-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #333;
+}
+
+.language-item:last-child {
+    border-bottom: none;
+}
+
+.language-name {
+    color: #fff;
+    font-weight: 600;
+}
+
+.language-level {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.cv-footer {
+    text-align: center;
+    padding: 2rem;
+}
+
+.more-button {
+    background: #111;
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    font-family: monospace;
+    text-transform: uppercase;
+}
+
+.more-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s;
+}
+
+.more-button:hover::before {
+    left: 100%;
+}
+
+.more-button:hover {
+    background: #fff;
+    color: #000;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+}
+
+.more-button:active {
+    transform: translateY(-1px);
+}
+
+.more-icon {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.more-button:hover .more-icon {
+    transform: translateX(5px);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .cv-profile {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .profile-image-container {
+        justify-self: center;
+    }
+    
+    .profile-image {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto;
+    }
+    
+    .cv-item {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .cv-year {
+        text-align: left;
+        width: fit-content;
+    }
+    
+    .skill-item,
+    .language-item {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+    
+    .detail-item {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+    
+    .detail-label {
+        font-size: 0.8rem;
+    }
+}
+
+/* Animation for skill bars on page load */
+@keyframes fillSkill {
+    from { width: 0; }
+    to { width: var(--skill-width); }
+}
+
+.skill-bar {
+    animation: fillSkill 1.5s ease-out 0.5s both;
+}
+</style>
+
+<script>
+// Function for the "more" button (currently does nothing as requested)
+function showMoreInfo() {
+    // Placeholder function - does nothing for now
+    console.log('More button clicked - functionality to be implemented');
+}
+
+// Animate skill bars when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    const skillBars = document.querySelectorAll('.skill-bar');
+    skillBars.forEach(bar => {
+        const width = bar.style.width;
+        bar.style.setProperty('--skill-width', width);
+        bar.style.width = '0';
+        setTimeout(() => {
+            bar.style.width = width;
+        }, 500);
+    });
+});
+</script>
