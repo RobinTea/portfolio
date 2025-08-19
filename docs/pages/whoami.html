@@ -527,6 +527,16 @@ function showMoreInfo() {
     console.log('More button clicked - functionality to be implemented');
 }
 
+function toggleExplanation() {
+    const explanationSection = document.getElementById('explanationSection');
+    if (explanationSection.style.display === 'none') {
+        explanationSection.style.display = 'block';
+        explanationSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    } else {
+        explanationSection.style.display = 'none';
+    }
+}
+
 // Animate skill bars when page loads
 document.addEventListener('DOMContentLoaded', function() {
     const skillBars = document.querySelectorAll('.skill-bar');
@@ -541,3 +551,4 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 </script>
+
