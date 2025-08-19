@@ -522,4 +522,15 @@ window.addEventListener('resize', checkTabLimit);
 document.addEventListener('DOMContentLoaded', function() {
     checkTabLimit();
     addDownloadStyles(); // Add download feedback styles
+
 });
+
+function toggleExplanation() {
+    const explanationSection = document.getElementById('explanationSection');
+    if (explanationSection.style.display === 'none') {
+        explanationSection.style.display = 'block';
+        explanationSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    } else {
+        explanationSection.style.display = 'none';
+    }
+}
