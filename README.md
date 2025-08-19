@@ -1,5 +1,7 @@
 # Portfolio
 Die Idee vom Browser kam nach einer überlegung wie ich ein Menu richtig darstellen könnte. <br>
+Ich muss etwas spezieles für die Bewerbungen haben. Etwas neues. Und zwar schnell.<br>
+Die Bewerbungen müssen jetzt raus.<br>
 
 Im moment noch nicht fertiggestellt <br>
 Sprache auf Englisch. Da ich alles andere (zB. Windows) auf Englisch habe ist es einfacher in einer Sprache zu bleiben. <br>
