@@ -1,8 +1,16 @@
 # Portfolio
+Die Idee vom Browser kam nach einer überlegung wie ich ein Menu richtig darstellen könnte. <br>
+
 Im moment noch nicht fertiggestellt <br>
 Sprache auf Englisch. Da ich alles andere (zB. Windows) auf Englisch habe ist es einfacher in einer Sprache zu bleiben. <br>
 Sprach wechsel Feature in Arbeit. <br>
 
+log:
+<br>
+<br>19.08: 4th day and I want it to be done on 24th - created whoami.html added readme to repo
+<br>18.08: created the files.html and contact.html - needs optimazation
+<br>17.08: imporved - Browser is now working and menu links to html files in "pages" directory
+<br>16.08.25: Idee Strukturiert analysiert, core Features entschieden, basics down
 
 whoever it was, thank you very much for the star,
 I promise this will be a masterpiece
