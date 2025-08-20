@@ -16,6 +16,7 @@ tech:
 <br>
 log:
 <br>
+<br>20.08: Menu überarbeitet und template für "projects"
 <br>19.08: 4th day and I want it to be done on 24th - created whoami.html added readme to repo
 <br>18.08: created the files.html and contact.html - needs optimazation
 <br>17.08: imporved - Browser is now working and menu links to html files in "pages" directory added hotkeys
