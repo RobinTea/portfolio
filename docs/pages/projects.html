@@ -1,0 +1,458 @@
+<div class="page-content">
+    <div class="back-button" onclick="navigateToPage(activeTab, 'menu')">← Back to Menu</div>
+    
+    <div class="projects-header">
+        <h2>PROJECTS</h2>
+        <p>Explore my development journey and creative solutions</p>
+    </div>
+
+    <!-- Main Projects Section -->
+    <div class="projects-section">
+        <h3>FEATURED PROJECTS</h3>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-gif">
+                    <img src="gifs/web-project.gif" alt="Web Project Demo" class="gif-preview">
+                </div>
+                <div class="project-info">
+                    <h4>Portfolio Website</h4>
+                    <p>A responsive personal portfolio built with modern web technologies. Features interactive animations and clean design principles.</p>
+                    <div class="project-meta">
+                        <span class="tech-tag">HTML/CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                </div>
+                <button class="learn-more-btn" onclick="showProjectDetails('portfolio')">
+                    <span class="learn-icon">→</span> LEARN MORE
+                </button>
+            </div>
+
+            <div class="project-card">
+                <div class="project-gif">
+                    <img src="gifs/mobile-app.gif" alt="Mobile App Demo" class="gif-preview">
+                </div>
+                <div class="project-info">
+                    <h4>Task Management App</h4>
+                    <p>A cross-platform mobile application for productivity management with real-time synchronization and intuitive user interface.</p>
+                    <div class="project-meta">
+                        <span class="tech-tag">React Native</span>
+                        <span class="tech-tag">Firebase</span>
+                    </div>
+                </div>
+                <button class="learn-more-btn" onclick="showProjectDetails('taskapp')">
+                    <span class="learn-icon">→</span> LEARN MORE
+                </button>
+            </div>
+
+            <div class="project-card">
+                <div class="project-gif">
+                    <img src="gifs/game-project.gif" alt="Game Project Demo" class="gif-preview">
+                </div>
+                <div class="project-info">
+                    <h4>2D Puzzle Game</h4>
+                    <p>An engaging puzzle game with custom physics engine and procedural level generation. Built from scratch using modern game development principles.</p>
+                    <div class="project-meta">
+                        <span class="tech-tag">Unity</span>
+                        <span class="tech-tag">C#</span>
+                    </div>
+                </div>
+                <button class="learn-more-btn" onclick="showProjectDetails('puzzle-game')">
+                    <span class="learn-icon">→</span> LEARN MORE
+                </button>
+            </div>
+
+            <div class="project-card">
+                <div class="project-gif">
+                    <img src="gifs/api-project.gif" alt="API Project Demo" class="gif-preview">
+                </div>
+                <div class="project-info">
+                    <h4>REST API Service</h4>
+                    <p>A scalable backend service with comprehensive documentation, authentication, and real-time data processing capabilities.</p>
+                    <div class="project-meta">
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                    </div>
+                </div>
+                <button class="learn-more-btn" onclick="showProjectDetails('api-service')">
+                    <span class="learn-icon">→</span> LEARN MORE
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Projects page specific styles that work within the browser container */
+.page-content {
+    color: #fff;
+    padding-bottom: 2rem;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.projects-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: #111;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #333;
+}
+
+.projects-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #333 0%, #666 50%, #333 100%);
+}
+
+.projects-header h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: 2.2rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #fff;
+    border: none;
+}
+
+.projects-header p {
+    margin: 0;
+    color: #ccc;
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+.projects-section {
+    margin-bottom: 4rem;
+}
+
+.projects-section h3 {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 1px;
+    position: relative;
+    padding-left: 1rem;
+    border-bottom: 2px solid #333;
+    padding-bottom: 0.5rem;
+}
+
+.projects-section h3::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #fff;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.project-card {
+    background: #111;
+    border: 2px solid #333;
+    padding: 2rem;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    min-height: auto;
+    height: auto;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #fff;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover::before {
+    transform: translateX(0);
+}
+
+.project-card:hover {
+    border-color: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+}
+
+.project-gif {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    height: 120px;
+    overflow: hidden;
+    border: 2px solid #333;
+    background: #222;
+    position: relative;
+}
+
+.gif-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .gif-preview {
+    transform: scale(1.05);
+}
+
+.project-gif::after {
+    content: 'GIF';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 2px 6px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.project-info h4 {
+    margin: 0 0 1rem 0;
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.project-info p {
+    margin: 0 0 1.5rem 0;
+    color: #ccc;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.project-meta {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.tech-tag {
+    background: #222;
+    border: 1px solid #444;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    color: #ccc;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+}
+
+.project-card:hover .tech-tag {
+    border-color: #666;
+    color: #fff;
+}
+
+.learn-more-btn {
+    background: #fff;
+    color: #000;
+    border: 2px solid #fff;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    font-family: monospace;
+}
+
+.learn-more-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0,0,0,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.learn-more-btn:hover::before {
+    left: 100%;
+}
+
+.learn-more-btn:hover {
+    background: #ccc;
+    transform: translateY(-2px);
+}
+
+.learn-more-btn:active {
+    transform: translateY(0);
+}
+
+.learn-icon {
+    font-size: 1.2rem;
+    font-weight: 900;
+    transition: transform 0.2s ease;
+}
+
+.learn-more-btn:hover .learn-icon {
+    transform: translateX(3px);
+}
+
+.links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.project-link {
+    background: #111;
+    border: 1px solid #333;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.2s ease;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1rem;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    min-height: auto;
+}
+
+.project-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #fff;
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.project-link:hover::before {
+    transform: scaleY(1);
+}
+
+.project-link:hover {
+    border-color: #fff;
+    transform: translateX(5px);
+    text-decoration: none;
+    color: #fff;
+}
+
+.link-icon {
+    display: flex;
+    align-items: center;
+}
+
+.link-shape {
+    width: 30px;
+    height: 30px;
+    background: #222;
+    border: 2px solid #666;
+    transform: rotate(45deg);
+    position: relative;
+}
+
+.link-shape::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    width: 12px;
+    height: 12px;
+    border: 2px solid #666;
+    border-radius: 50%;
+}
+
+.project-link-info h4 {
+    margin: 0 0 0.5rem 0;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.project-link-info p {
+    margin: 0;
+    color: #ccc;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.external-icon {
+    font-size: 1.5rem;
+    color: #666;
+    font-weight: 900;
+    transition: transform 0.2s ease;
+}
+
+.project-link:hover .external-icon {
+    transform: translateX(3px);
+    color: #fff;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .links-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .projects-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .project-card {
+        padding: 1.5rem;
+    }
+    
+    .project-link {
+        grid-template-columns: auto 1fr;
+        gap: 1rem;
+    }
+    
+    .external-icon {
+        grid-column: 2;
+        justify-self: end;
+        margin-top: 0.5rem;
+    }
+    
+    .project-meta {
+        gap: 0.3rem;
+    }
+    
+    .tech-tag {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.6rem;
+    }
+}
+</style>

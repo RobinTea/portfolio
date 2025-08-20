@@ -1,6 +1,289 @@
 <div class="page-content">
     <div class="back-button" onclick="navigateToPage(activeTab, 'menu')">← Back to Menu</div>
-    <h2>contact</h2>
-    <p>Get in touch with me</p>
-    <p>robin.taing@hotmail.com</p>
+    
+    <div class="contact-header">
+        <h2>CONTACT</h2>
+        <p>Feel free to contact me</p>
+    </div>
+
+    <!-- Contact Information Section -->
+    <div class="contact-section">
+        <h3>GET IN TOUCH</h3>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <div class="icon-shape email-icon"></div>
+                </div>
+                <div class="contact-info">
+                    <h4>Email</h4>
+                    <p>Send me a message for business inquiries, collaboration opportunities, or just to say hello.</p>
+                    <div class="contact-meta">
+                        <span class="contact-type">PRIMARY</span>
+                        <span class="response-time">24H Response</span>
+                    </div>
+                </div>
+                <button class="contact-btn" onclick="window.location.href='mailto:robin.taing@hotmail.com'">
+                    <span class="contact-icon-btn">✉</span> robin.taing@hotmail.com
+                </button>
+            </div>
+
+        </div>
+    </div>
 </div>
+
+<style>
+/* Contact page specific styles that work within the browser container */
+.page-content {
+    color: #fff;
+    padding-bottom: 2rem;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: #111;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #333;
+}
+
+.contact-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #333 0%, #666 50%, #333 100%);
+}
+
+.contact-header h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: 2.2rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #fff;
+    border: none;
+}
+
+.contact-header p {
+    margin: 0;
+    color: #ccc;
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+.contact-section {
+    margin-bottom: 4rem;
+}
+
+.contact-section h3 {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 1px;
+    position: relative;
+    padding-left: 1rem;
+    border-bottom: 2px solid #333;
+    padding-bottom: 0.5rem;
+}
+
+.contact-section h3::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #fff;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.contact-card {
+    background: #111;
+    border: 2px solid #333;
+    padding: 2rem;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    min-height: auto;
+    height: auto;
+}
+
+.contact-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #fff;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.contact-card:hover::before {
+    transform: translateX(0);
+}
+
+.contact-card:hover {
+    border-color: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+}
+
+.contact-icon {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.icon-shape {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #fff;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.email-icon {
+    background: #222;
+}
+
+.email-icon::before {
+    content: '✉';
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+
+.linkedin-icon {
+    background: #0077b5;
+}
+
+.linkedin-icon::before {
+    content: 'in';
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 900;
+    text-transform: lowercase;
+}
+
+.contact-info h4 {
+    margin: 0 0 1rem 0;
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.contact-info p {
+    margin: 0 0 1.5rem 0;
+    color: #ccc;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.contact-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.contact-type, .response-time {
+    background: #222;
+    border: 1px solid #444;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    color: #ccc;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.contact-btn {
+    background: #fff;
+    color: #000;
+    border: 2px solid #fff;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    font-family: monospace;
+}
+
+.contact-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0,0,0,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.contact-btn:hover::before {
+    left: 100%;
+}
+
+.contact-btn:hover {
+    background: #ccc;
+    transform: translateY(-2px);
+}
+
+.contact-btn:active {
+    transform: translateY(0);
+}
+
+.contact-icon-btn {
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .contact-card {
+        padding: 1.5rem;
+    }
+    
+    .contact-meta {
+        gap: 0.5rem;
+    }
+    
+    .contact-type, .response-time {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.6rem;
+    }
+}
+</style>

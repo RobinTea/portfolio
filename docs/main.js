@@ -18,7 +18,7 @@ let isInMenu = true; // Track if we're in a menu
 const templateCache = {};
 
 // Menu items mapping
-const menuItems = ['whoami', 'why-you', 'why-me', 'files', 'contact'];
+const menuItems = ['whoami', 'projects', 'files', 'contact'];
 
 // Download functionality - Global functions
 function downloadFile(filePath, fileName) {
@@ -117,8 +117,7 @@ async function loadTemplate(pageName, variables = {}) {
 const pageContent = {
     menu: async (tabId) => await loadTemplate('menu', { tabId }),
     whoami: async (tabId) => await loadTemplate('whoami', { tabId }),
-    "why-you": async (tabId) => await loadTemplate('why-you', { tabId }),
-    "why-me": async (tabId) => await loadTemplate('why-me', { tabId }),
+    projects: async (tabId) => await loadTemplate('projects', { tabId }),
     files: async (tabId) => await loadTemplate('files', { tabId }),
     contact: async (tabId) => await loadTemplate('contact', { tabId })
 };
