@@ -100,6 +100,56 @@
                     </div>
                 </div>
             </div>
+
+            <div class="cv-section">
+                <h4>HOBBIES & INTERESTS</h4>
+                <div class="hobbies-grid">
+                    <div class="hobby-category">
+                        <h5>Sport</h5>
+                        <div class="hobby-list">
+                            <div class="hobby-item">
+                                <span class="hobby-name">Jogging</span>
+                                <span class="hobby-description">Endurance running for fitness and mental clarity</span>
+                            </div>
+                            <div class="hobby-item">
+                                <span class="hobby-name">Skiing</span>
+                                <span class="hobby-description">skiing with friends or family during winter seasons</span>
+                            </div>
+                            <div class="hobby-item">
+                                <span class="hobby-name">300m Shooting</span>
+                                <span class="hobby-description">Precision sport shooting at 300 meter distance</span>
+                            </div>
+                            <div class="hobby-item">
+                                <span class="hobby-name">Niche Explorer</span>
+                                <span class="hobby-description">I enjoy discovering niche topics and their clever ideas to improve myself</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hobby-category">
+                        <h5>Technology & Creative</h5>
+                        <div class="hobby-list">
+                            <div class="hobby-item">
+                                <span class="hobby-name">Amateur 3D Design</span>
+                                <span class="hobby-description">Creating 3D models and digital art projects</span>
+                            </div>
+                            <div class="hobby-item">
+                                <span class="hobby-name">Microcontrollers</span>
+                                <span class="hobby-description">Working with nice!nano, Arduino, and Raspberry Pi</span>
+                            </div>
+                            <div class="hobby-item">
+                                <span class="hobby-name">Piano</span>
+                                <span class="hobby-description">Playing classical mostly from bulgaria</span>
+                            </div>
+                            <div class="hobby-item">
+                                <span class="hobby-name">Davinci Resolve</span>
+                                <span class="hobby-description">Occasionally cuting Videos for fun</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <div class="cv-footer">
@@ -406,6 +456,62 @@
     font-size: 0.9rem;
 }
 
+/* Hobbies section styles */
+.hobbies-grid {
+    display: grid;
+    gap: 2rem;
+}
+
+.hobby-category {
+    margin-bottom: 1.5rem;
+}
+
+.hobby-category:last-child {
+    margin-bottom: 0;
+}
+
+.hobby-category h5 {
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #333;
+}
+
+.hobby-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.hobby-item {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #333;
+    align-items: start;
+}
+
+.hobby-item:last-child {
+    border-bottom: none;
+}
+
+.hobby-name {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hobby-description {
+    color: #ccc;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    font-style: italic;
+}
+
 .cv-footer {
     text-align: center;
     padding: 2rem;
@@ -506,6 +612,11 @@
     
     .detail-label {
         font-size: 0.8rem;
+    }
+    
+    .hobby-item {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
     }
 }
 
