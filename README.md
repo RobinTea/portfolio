@@ -16,6 +16,7 @@ tech:
 <br>
 log:
 <br>
+<br>25.08: decided to extend the project but the Website only needs pictures now
 <br>20.08: Menu überarbeitet und template für "projects"
 <br>19.08: 4th day and I want it to be done on 24th - created whoami.html added readme to repo
 <br>18.08: created the files.html and contact.html - needs optimazation
