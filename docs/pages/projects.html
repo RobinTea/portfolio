@@ -22,8 +22,8 @@
                         <span class="tech-tag">JavaScript</span>
                     </div>
                 </div>
-                <button class="learn-more-btn" onclick="showProjectDetails('portfolio')">
-                    <span class="learn-icon">→</span> LEARN MORE
+                <button class="more-button" onclick="showProjectDetails('portfolio')">
+                    <span class="more-icon">→</span> LEARN MORE
                 </button>
             </div>
 
@@ -39,8 +39,8 @@
                         <span class="tech-tag">WPF</span>
                     </div>
                 </div>
-                <button class="learn-more-btn" onclick="showProjectDetails('DeskClock')">
-                    <span class="learn-icon">→</span> LEARN MORE
+                <button class="more-button" onclick="showProjectDetails('DeskClock')">
+                    <span class="more-icon">→</span> LEARN MORE
                 </button>
             </div>
 
@@ -56,8 +56,8 @@
                         <span class="tech-tag">Jupyter</span>
                     </div>
                 </div>
-                <button class="learn-more-btn" onclick="showProjectDetails('TextPredictor')">
-                    <span class="learn-icon">→</span> LEARN MORE
+                <button class="more-button" onclick="showProjectDetails('TextPredictor')">
+                    <span class="more-icon">→</span> LEARN MORE
                 </button>
             </div>
 
@@ -73,8 +73,8 @@
                         <span class="tech-tag">KiCad</span>
                     </div>
                 </div>
-                <button class="learn-more-btn" onclick="showProjectDetails('Key')">
-                    <span class="learn-icon">→</span> LEARN MORE
+                <button class="more-button" onclick="showProjectDetails('Key')">
+                    <span class="more-icon">→</span> LEARN MORE
                 </button>
             </div>
 
@@ -90,8 +90,8 @@
                         <span class="tech-tag">JavaScript</span>
                     </div>
                 </div>
-                <button class="learn-more-btn" onclick="showProjectDetails('Web')">
-                    <span class="learn-icon">→</span> LEARN MORE
+                <button class="more-button" onclick="showProjectDetails('Web')">
+                    <span class="more-icon">→</span> LEARN MORE
                 </button>
             </div>
         </div>
@@ -283,58 +283,58 @@
     color: #fff;
 }
 
-.learn-more-btn {
-    background: #fff;
-    color: #000;
+.more-button {
+    background: #111;
+    color: #fff;
     border: 2px solid #fff;
     padding: 1rem 2rem;
     cursor: pointer;
     font-weight: 700;
-    transition: all 0.2s ease;
-    display: flex;
+    transition: all 0.3s ease;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 0.8rem;
-    font-size: 0.9rem;
+    gap: 1rem;
+    font-size: 1rem;
     letter-spacing: 1px;
-    width: 100%;
     position: relative;
     overflow: hidden;
     font-family: monospace;
+    text-transform: uppercase;
 }
 
-.learn-more-btn::before {
+.more-button::before {
     content: '';
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(0,0,0,0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
     transition: left 0.5s;
 }
 
-.learn-more-btn:hover::before {
+.more-button:hover::before {
     left: 100%;
 }
 
-.learn-more-btn:hover {
-    background: #ccc;
-    transform: translateY(-2px);
+.more-button:hover {
+    background: #fff;
+    color: #000;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
 }
 
-.learn-more-btn:active {
-    transform: translateY(0);
+.more-button:active {
+    transform: translateY(-1px);
 }
 
-.learn-icon {
+.more-icon {
     font-size: 1.2rem;
-    font-weight: 900;
-    transition: transform 0.2s ease;
+    transition: transform 0.3s ease;
 }
 
-.learn-more-btn:hover .learn-icon {
-    transform: translateX(3px);
+.more-button:hover .more-icon {
+    transform: translateX(5px);
 }
 
 .links-grid {
