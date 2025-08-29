@@ -238,22 +238,22 @@
 .cv-profile::before {
     content: '';
     position: absolute;
-    top: 0;
     left: 0;
-    right: 0;
-    height: 3px;
+    top: 0;
+    bottom: 0;
+    width: 4px;
     background: #fff;
-    transform: translateX(-100%);
+    transform: scaleY(0);
     transition: transform 0.3s ease;
 }
 
 .cv-profile:hover::before {
-    transform: translateX(0);
+    transform: scaleY(1);
 }
 
 .cv-profile:hover {
     border-color: #fff;
-    transform: translateY(-5px);
+    transform: translateX(5px);
     box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
 }
 
@@ -330,17 +330,17 @@
     bottom: 0;
     width: 4px;
     background: #fff;
-    transform: translateX(-100%);
+    transform: scaleY(0);
     transition: transform 0.3s ease;
 }
 
 .cv-section:hover::before {
-    transform: translateX(0);
+    transform: scaleY(1);
 }
 
 .cv-section:hover {
     border-color: #fff;
-    transform: translateY(-5px);
+    transform: translateX(5px);
     box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
 }
 
