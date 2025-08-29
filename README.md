@@ -31,6 +31,7 @@ fixes needed:
 - ~~gifs in projects~~
 - add icon for website
 - alignement for project-cards
+- improving contact tab
 
 <br><br>
 whoever it was, thank you for the star,
