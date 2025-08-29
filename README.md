@@ -3,7 +3,7 @@ Die Idee vom Browser kam nach einer überlegung wie ich ein Menu richtig darstel
 Ich muss etwas spezieles für die Bewerbungen haben. Etwas neues. Und zwar schnell.<br>
 Die Bewerbungen müssen jetzt raus. :)<br>
 
-Im moment noch nicht fertiggestellt <br>
+Im moment noch nicht fertiggestellt (es fehlen die verlinkungen und ein paar bug fixes) <br>
 Sprache auf Englisch. Da ich alles andere (zB. Windows) auf Englisch habe ist es einfacher in einer Sprache zu bleiben. <br>
 Sprach wechsel Feature in Arbeit. <br>
 Sollte eigentlich modern aussehen mit einem Hintergrund Bild, jedoch sieht es jetzt ohne Hintergrund so wie die Konsole aus. <br>
@@ -29,7 +29,8 @@ log:
 fixes needed:
 - ~~animation in whoami~~
 - ~~gifs in projects~~
-- add icon for website 
+- add icon for website
+- alignement for project-cards
 
 <br><br>
 whoever it was, thank you for the star,
