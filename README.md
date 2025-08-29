@@ -26,14 +26,6 @@ log:
 <br>16.08.25: Idee Strukturiert analysiert, core Features entschieden, basics down
 
 <br><br>
-fixes needed:
-- ~~animation in whoami~~
-- ~~gifs in projects~~
-- add icon for website
-- alignement for project-cards
-- improving contact tab
-
-<br><br>
 whoever it was, thank you for the star,
 I promise this will be a masterpiece
 <br>
