@@ -26,8 +26,8 @@ log:
 
 <br><br>
 fixes needed:
-- animation in whoami
-- gifs in projects
+- ~~animation in whoami~~
+- ~~gifs in projects~~
 - add icon for website 
 
 <br><br>
