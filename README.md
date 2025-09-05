@@ -26,7 +26,7 @@ log:
 <br>16.08.25: Idee Strukturiert analysiert, core Features entschieden, basics down
 
 <br><br>
-whoever it was, thank you for the star,
+thank you for the star,
 I promise this will be a masterpiece
 <br>
 
