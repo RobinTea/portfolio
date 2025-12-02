@@ -151,22 +151,22 @@ document.addEventListener('keydown', function(e) {
     showKeyIndicator();
 
     // Handle shortcuts with cooldown to allow rapid actions
-    if (key === 'f') {
-        const actionKey = 'f';
+    if (key === 'q') {
+        const actionKey = 'q';
         if (!lastActionKeys[actionKey] || (now - lastActionKeys[actionKey]) > actionCooldown) {
             e.preventDefault();
             openNewTab();
             lastActionKeys[actionKey] = now;
         }
-    } else if (key === 'd') {
-        const actionKey = 'd';
+    } else if (key === 'e') {
+        const actionKey = 'e';
         if (!lastActionKeys[actionKey] || (now - lastActionKeys[actionKey]) > actionCooldown) {
             e.preventDefault();
             closeTab(activeTab);
             lastActionKeys[actionKey] = now;
         }
-    } else if (key === 's') {
-        const actionKey = 's';
+    } else if (key === 'd') {
+        const actionKey = 'd';
         if (!lastActionKeys[actionKey] || (now - lastActionKeys[actionKey]) > actionCooldown) {
             e.preventDefault();
             switchToNextTab();
@@ -188,8 +188,8 @@ document.addEventListener('keydown', function(e) {
             }
             lastActionKeys[actionKey] = now;
         }
-    } else if (key === 'g') {
-        const actionKey = 'g';
+    } else if (key === 't') {
+        const actionKey = 't';
         if (!lastActionKeys[actionKey] || (now - lastActionKeys[actionKey]) > actionCooldown) {
             e.preventDefault();
             toggleTV();
@@ -209,10 +209,10 @@ document.addEventListener('keydown', function(e) {
             const selectedItem = menuItems[selectedMenuIndex];
             navigateToPage(activeTab, selectedItem);
         }
-    } else if (key === 'c' && isInMenu) {
+    } else if (key === 'w' && isInMenu) {
         e.preventDefault();
         navigateMenu(-1);
-    } else if (key === 'v' && isInMenu) {
+    } else if (key === 's' && isInMenu) {
         e.preventDefault();
         navigateMenu(1);
     }
