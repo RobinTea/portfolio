@@ -24,6 +24,7 @@ log:
 <br>18.08: created the files.html and contact.html - needs optimazation
 <br>17.08: imporved - Browser is now working and menu links to html files in "pages" directory added hotkeys
 <br>16.08.25: Idee Strukturiert analysiert, core Features entschieden, basics down
+<br>04.12.25: I consider it done, made some grammar fixes and added a flyer of ims today
 
 <br><br>
 thank you for the star,
