@@ -2,7 +2,7 @@ let tabCounter = 1;
 let activeTab = 1;
 let tabs = {
     1: {
-        title: "Menu", 
+        title: "menu", 
         currentPage: "menu"
     }
 };
@@ -11,14 +11,14 @@ let keysPressed = {};
 let keyIndicatorTimeout;
 let lastActionKeys = {}; // Track last action to prevent rapid repeated execution
 const actionCooldown = 100; // Milliseconds between actions
-let selectedMenuIndex = 0; // For menu navigation
+let selectedMenuIndex = 1; // For menu navigation
 let isInMenu = true; // Track if in menu
 
 // Template cache for better performance
 const templateCache = {};
 
 // Menu items mapping
-const menuItems = ['whoami', 'projects', 'files', 'contact'];
+const menuItems = ['whoami', 'skills', 'projects', 'files', 'contact'];
 
 // Download functionality - Global functions
 function downloadFile(filePath, fileName) {
@@ -117,6 +117,7 @@ async function loadTemplate(pageName, variables = {}) {
 const pageContent = {
     menu: async (tabId) => await loadTemplate('menu', { tabId }),
     whoami: async (tabId) => await loadTemplate('whoami', { tabId }),
+    skills: async (tabId) => await loadTemplate('skills', { tabId }),
     projects: async (tabId) => await loadTemplate('projects', { tabId }),
     files: async (tabId) => await loadTemplate('files', { tabId }),
     contact: async (tabId) => await loadTemplate('contact', { tabId })
@@ -297,30 +298,6 @@ function toggleHelp() {
     helpModal.classList.toggle('active');
 }
 
-/*
-function toggleTV() {
-    tvActive = !tvActive;
-    const body = document.body;
-    const indicator = document.getElementById('tv-indicator');
-    
-    if (tvActive) {
-        body.classList.add('tv-effect');
-        indicator.classList.add('active');
-        setTimeout(() => {
-            indicator.classList.remove('active');
-        }, 2000); // Show indicator for 2 seconds
-    } else {
-        body.classList.remove('tv-effect');
-        indicator.classList.add('active');
-        indicator.textContent = 'OLD TV MODE OFF';
-        setTimeout(() => {
-            indicator.classList.remove('active');
-            indicator.textContent = 'OLD TV MODE';
-        }, 2000);
-    }
-}
-*/
-
 function launchBrowser() {
     // Hide launch screen and show browser
     document.getElementById('launch-screen').classList.add('hidden');
@@ -339,7 +316,7 @@ async function navigateToPage(tabId, page) {
     if (isInMenu) {
         selectedMenuIndex = 0;
     }
-    
+
     // Update tab title based on page
     const tabElement = document.querySelector(`[data-tab-id="${tabId}"]`);
     const tabTitle = tabElement.querySelector('.tab-title');
@@ -374,7 +351,7 @@ async function openNewTab() {
     
     // Create new tab with menu as default page
     tabs[tabId] = {
-        title: "Menu", 
+        title: "menu", 
         currentPage: "menu"
     };
     
@@ -386,7 +363,7 @@ async function openNewTab() {
     tabElement.className = 'tab';
     tabElement.setAttribute('data-tab-id', tabId);
     tabElement.innerHTML = `
-        <span class="tab-title">Menu</span>
+        <span class="tab-title">menu</span>
         <span class="tab-close" onclick="closeTab(${tabId})">×</span>
     `;
     
@@ -403,7 +380,7 @@ async function openNewTab() {
     // Switch to new tab
     activeTab = tabId;
     isInMenu = true;
-    selectedMenuIndex = 0;
+    selectedMenuIndex = 1;
     await updateContent();
     
     checkTabLimit();
@@ -469,11 +446,11 @@ async function updateContent() {
             
             // Reset menu selection if we're in menu
             if (tabData.currentPage === 'menu') {
-                selectedMenuIndex = 0;
+                selectedMenuIndex = 1;
                 const menuElements = document.querySelectorAll('.menu-item');
                 menuElements.forEach((el, index) => {
                     el.classList.remove('selected');
-                    if (index === 0) el.classList.add('selected');
+                    if (index === 1) el.classList.add('selected');
                 });
             }
         } else {
