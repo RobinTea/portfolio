@@ -6,13 +6,13 @@ let tabs = {
         currentPage: "menu"
     }
 };
-let tvActive = false;
+//let tvActive = false;
 let keysPressed = {};
 let keyIndicatorTimeout;
 let lastActionKeys = {}; // Track last action to prevent rapid repeated execution
 const actionCooldown = 100; // Milliseconds between actions
 let selectedMenuIndex = 0; // For menu navigation
-let isInMenu = true; // Track if we're in a menu
+let isInMenu = true; // Track if in menu
 
 // Template cache for better performance
 const templateCache = {};
@@ -59,7 +59,7 @@ function showDownloadFeedback(fileName) {
     
     document.body.appendChild(feedback);
     
-    // Remove after 3 seconds
+    // Remove - 3s
     setTimeout(() => {
         feedback.remove();
     }, 3000);
@@ -113,7 +113,7 @@ async function loadTemplate(pageName, variables = {}) {
     }
 }
 
-// Page content templates using external files
+// Page content templates - external files
 const pageContent = {
     menu: async (tabId) => await loadTemplate('menu', { tabId }),
     whoami: async (tabId) => await loadTemplate('whoami', { tabId }),
@@ -124,7 +124,6 @@ const pageContent = {
 
 // Keyboard shortcuts with improved rapid action support
 document.addEventListener('keydown', function(e) {
-    // Don't trigger shortcuts if help modal is open
     if (document.getElementById('help-modal').classList.contains('active')) {
         if (e.key === 'h') {
             toggleHelp();
@@ -132,9 +131,8 @@ document.addEventListener('keydown', function(e) {
         return;
     }
     
-    // Handle launch screen
     if (document.getElementById('browser-container').classList.contains('browser-closed')) {
-        if (e.key.toLowerCase() === ' ') {
+        if (e.key === ' ') {
             e.preventDefault();
             launchBrowser();
         }
@@ -144,43 +142,57 @@ document.addEventListener('keydown', function(e) {
     const key = e.key.toLowerCase();
     const now = Date.now();
     
-    // Set key as pressed
     keysPressed[key] = true;
 
-    // Show key indicator
     showKeyIndicator();
 
-    // Handle shortcuts with cooldown to allow rapid actions
-    if (key === 'q') {
-        const actionKey = 'q';
-        if (!lastActionKeys[actionKey] || (now - lastActionKeys[actionKey]) > actionCooldown) {
-            e.preventDefault();
-            openNewTab();
-            lastActionKeys[actionKey] = now;
-        }
-    } else if (key === 'e') {
-        const actionKey = 'e';
+    //shortcuts
+    if (key === 'arrowleft' && keysPressed['shift']) {
+        const actionKey = 'arrowleft + shift';
         if (!lastActionKeys[actionKey] || (now - lastActionKeys[actionKey]) > actionCooldown) {
             e.preventDefault();
             closeTab(activeTab);
             lastActionKeys[actionKey] = now;
         }
-    } else if (key === 'd') {
-        const actionKey = 'd';
+    } else if (key === 'arrowright' && keysPressed['shift']) {
+        const actionKey = 'arrowright + shift';
         if (!lastActionKeys[actionKey] || (now - lastActionKeys[actionKey]) > actionCooldown) {
             e.preventDefault();
-            switchToNextTab();
+            openNewTab();
             lastActionKeys[actionKey] = now;
         }
-    } else if (key === 'a') {
-        const actionKey = 'a';
+    } else if (key === 'arrowup' && isInMenu) {
+        e.preventDefault();
+        navigateMenu(-1);
+    } else if (key === 'arrowdown' && isInMenu) {
+        e.preventDefault();
+        navigateMenu(1);
+    } else if (key === 'arrowleft' && keysPressed['control']) {
+        const actionKey = 'arrowleft + control';
         if (!lastActionKeys[actionKey] || (now - lastActionKeys[actionKey]) > actionCooldown) {
             e.preventDefault();
             switchToPreviousTab();
             lastActionKeys[actionKey] = now;
         }
-    } else if (key === 'x') {
-        const actionKey = 'x';
+    } else if (key === 'arrowright' && keysPressed['control']) {
+        const actionKey = 'arrowright + control';
+        if (!lastActionKeys[actionKey] || (now - lastActionKeys[actionKey]) > actionCooldown) {
+            e.preventDefault();
+            switchToNextTab();
+            lastActionKeys[actionKey] = now;
+        }
+    } else if (key === 'arrowright') {
+        const actionKey = 'arrowright';
+        if (!lastActionKeys[actionKey] || (now - lastActionKeys[actionKey]) > actionCooldown) {
+            e.preventDefault();
+            if (isInMenu) {
+                const selectedItem = menuItems[selectedMenuIndex];
+                navigateToPage(activeTab, selectedItem);
+            }
+            lastActionKeys[actionKey] = now;
+        }
+    } else if (key === 'arrowleft') {
+        const actionKey = 'arrowleft';
         if (!lastActionKeys[actionKey] || (now - lastActionKeys[actionKey]) > actionCooldown) {
             e.preventDefault();
             if (tabs[activeTab] && tabs[activeTab].currentPage !== 'menu') {
@@ -188,12 +200,11 @@ document.addEventListener('keydown', function(e) {
             }
             lastActionKeys[actionKey] = now;
         }
-    } else if (key === 't') {
-        const actionKey = 't';
-        if (!lastActionKeys[actionKey] || (now - lastActionKeys[actionKey]) > actionCooldown) {
-            e.preventDefault();
-            toggleTV();
-            lastActionKeys[actionKey] = now;
+    } else if (key === 'enter' || key === ' ') {
+        e.preventDefault();
+        if (isInMenu) {
+            const selectedItem = menuItems[selectedMenuIndex];
+            navigateToPage(activeTab, selectedItem);
         }
     } else if (key === 'h') {
         const actionKey = 'h';
@@ -202,19 +213,6 @@ document.addEventListener('keydown', function(e) {
             toggleHelp();
             lastActionKeys[actionKey] = now;
         }
-    } else if (key === 'y' || key === ' ') {
-        e.preventDefault();
-        if (isInMenu) {
-            // Confirm selection in menu
-            const selectedItem = menuItems[selectedMenuIndex];
-            navigateToPage(activeTab, selectedItem);
-        }
-    } else if (key === 'w' && isInMenu) {
-        e.preventDefault();
-        navigateMenu(-1);
-    } else if (key === 's' && isInMenu) {
-        e.preventDefault();
-        navigateMenu(1);
     }
 });
 
@@ -222,11 +220,10 @@ document.addEventListener('keyup', function(e) {
     const key = e.key.toLowerCase();
     delete keysPressed[key];
     
-    // Hide key indicator if no keys are pressed
     if (Object.keys(keysPressed).length === 0) {
         hideKeyIndicator();
     } else {
-        showKeyIndicator(); // Update indicator
+        showKeyIndicator();
     }
 });
 
@@ -300,6 +297,7 @@ function toggleHelp() {
     helpModal.classList.toggle('active');
 }
 
+/*
 function toggleTV() {
     tvActive = !tvActive;
     const body = document.body;
@@ -321,6 +319,7 @@ function toggleTV() {
         }, 2000);
     }
 }
+*/
 
 function launchBrowser() {
     // Hide launch screen and show browser
@@ -442,7 +441,7 @@ function closeTab(tabId) {
     // If closed tab was active, activate another tab
     if (wasActive) {
         const remainingTabs = Object.keys(tabs);
-        activeTab = parseInt(remainingTabs[0]);
+        activeTab = parseInt(remainingTabs[remainingTabs.length - 1]);
         document.querySelector(`[data-tab-id="${activeTab}"]`).classList.add('active');
         isInMenu = (tabs[activeTab].currentPage === 'menu');
         updateContent();

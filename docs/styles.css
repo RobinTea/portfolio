@@ -28,7 +28,7 @@ body {
     align-items: center;
     min-height: 50px;
     padding: 0 10px;
-    flex-shrink: 0; /* Don't let tab bar shrink */
+    flex-shrink: 0; /* Disable tab bar shrink */
 }
 
 .tab {
@@ -46,7 +46,7 @@ body {
 .tab.active {
     border-bottom: 2px solid #000;
     margin-bottom: -2px;
-    background-color: #c4c4c4;
+    background-color: #9c9c9c;
     color: #000;
 }
 
@@ -74,6 +74,7 @@ body {
     color: #fff;
     cursor: pointer;
     font-family: monospace;
+    font-weight: bold;
     margin-left: 10px;
 }
 
@@ -109,7 +110,8 @@ body {
 }
 
 .help-button:hover {
-    background: #333;
+    background: #fff;
+    color: #000;
 }
 
 .help-modal {
@@ -151,7 +153,8 @@ body {
 }
 
 .help-close:hover {
-    background: #333;
+    background: #fff;
+    color: #000;
 }
 
 .help-content h2 {
