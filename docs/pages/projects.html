@@ -6,11 +6,38 @@
         <p>Explore my development journey and creative solutions</p>
     </div>
 
+    <div class="cv-footer">
+        <h3>SOFTWARE</h3>
+        <a class="more-button" href="https://robintea.github.io/Lernperiode-13/" target="_blank">
+            <span class="more-text">RECENT PROJECTS</span>
+            <span class="more-icon">→</span>
+        </a>
+    </div>
+
+    <br><br><br><br><br><br>
+
     <!-- Main Projects Section -->
     <div class="projects-section">
-        <h3>FEATURED PROJECTS</h3>
+        <h3>OTHER PROJECTS</h3>
 
         <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-gif">
+                    <img src="./pages/gifs/4.png" alt="TruceTironia" class="gif-preview">
+                </div>
+                <div class="project-info">
+                    <h4>Truce & Tironia</h4>
+                    <p>Custom Keyboards build from scratch</p>
+                    <div class="project-meta">
+                        <span class="tech-tag">Ergogen</span>
+                        <span class="tech-tag">KiCad</span>
+                    </div>
+                </div>
+                <button class="more-button" onclick="showProjectDetails('Key')">
+                    <span class="more-icon">→</span> LEARN MORE
+                </button>
+            </div>
+
             <div class="project-card">
                 <div class="project-gif">
                     <img src="./pages/gifs/6.png" alt="Portfolio" class="gif-preview">
@@ -78,23 +105,6 @@
                     <span class="more-icon">→</span> LEARN MORE
                 </a>
             </div>
-
-            <div class="project-card">
-                <div class="project-gif">
-                    <img src="./pages/gifs/4.png" alt="TruceTironia" class="gif-preview">
-                </div>
-                <div class="project-info">
-                    <h4>Truce & Tironia</h4>
-                    <p>Custom Keyboards build from scratch</p>
-                    <div class="project-meta">
-                        <span class="tech-tag">Ergogen</span>
-                        <span class="tech-tag">KiCad</span>
-                    </div>
-                </div>
-                <button class="more-button" onclick="showProjectDetails('Key')">
-                    <span class="more-icon">→</span> LEARN MORE
-                </button>
-            </div>
         </div>
     </div>
 </div>
@@ -149,6 +159,18 @@
     margin-bottom: 4rem;
 }
 
+h3 {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 1px;
+    position: relative;
+    padding-left: 1rem;
+    border-bottom: 2px solid #333;
+    padding-bottom: 0.5rem;
+}
+
 .projects-section h3 {
     font-size: 1.4rem;
     margin-bottom: 2rem;
@@ -159,6 +181,16 @@
     padding-left: 1rem;
     border-bottom: 2px solid #333;
     padding-bottom: 0.5rem;
+}
+
+.cv-footer h3::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #fff;
 }
 
 .projects-section h3::before {
