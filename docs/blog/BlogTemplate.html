@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Post Title — Your Name</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;1,9..40,200;1,9..40,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fafaf8;
+      --surface: #f4f4f0;
+      --border: #e8e8e2;
+      --text: #2a2a27;
+      --muted: #9a9a94;
+      --accent: #2a2a27;
+      --link: #5a6e4a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: 17px;
+      line-height: 1.85;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Top bar ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 40px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 300;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+    nav a:hover { color: var(--text); }
+
+    .nav-home {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      font-size: 18px !important;
+      text-transform: none !important;
+      letter-spacing: 0 !important;
+      color: var(--text) !important;
+    }
+
+    .nav-links { display: flex; gap: 30px; }
+
+    /* ── Page wrapper ── */
+    .page {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 120px 30px 100px;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--muted);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      margin-bottom: 50px;
+    }
+    .breadcrumb a { color: var(--muted); text-decoration: none; transition: color .2s; }
+    .breadcrumb a:hover { color: var(--text); }
+    .breadcrumb-sep { color: var(--border); }
+
+    /* ── Post header ── */
+    .post-header {
+      margin-bottom: 64px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .post-header h1 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(32px, 6vw, 52px);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 18px;
+    }
+
+    .post-meta {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--muted);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .post-meta-dot {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+
+    /* ── Body content ── */
+    .post-body { font-size: 17px; font-weight: 300; line-height: 1.85; color: var(--text); }
+
+    .post-body p { margin-bottom: 28px; }
+
+    .post-body strong { font-weight: 400; }
+    .post-body em { font-style: italic; }
+
+    .post-body a {
+      color: var(--link);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      transition: opacity .2s;
+    }
+    .post-body a:hover { opacity: .65; }
+
+    /* ── Section headings ── */
+    .section { margin-bottom: 60px; }
+
+    .section-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── Image showcase ── */
+    .showcase {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      margin: 32px 0;
+    }
+    .showcase img,
+    .showcase video {
+      width: 100%;
+      border-radius: 6px;
+      display: block;
+    }
+    .showcase-caption {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      font-style: italic;
+      text-align: center;
+      margin-top: 12px;
+      line-height: 1.5;
+    }
+
+    /* ── Inline code ── */
+    code {
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-size: .85em;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    pre {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      overflow-x: auto;
+      margin: 28px 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    pre code { background: none; border: none; padding: 0; }
+
+    /* ── Lists ── */
+    .post-body ul, .post-body ol {
+      padding-left: 22px;
+      margin-bottom: 28px;
+    }
+    .post-body li { margin-bottom: 8px; }
+
+    /* ── Divider ── */
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 48px 0;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 40px 30px;
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--muted);
+      letter-spacing: .05em;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      nav { padding: 14px 20px; }
+      .page { padding: 100px 20px 80px; }
+      .nav-links { display: none; }
+    }
+
+    /* ── Fade-in on load ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .post-header { animation: fadeUp .55s ease both; }
+    .section:nth-child(1) { animation: fadeUp .55s .08s ease both; }
+    .section:nth-child(2) { animation: fadeUp .55s .14s ease both; }
+    .section:nth-child(3) { animation: fadeUp .55s .20s ease both; }
+    .section:nth-child(4) { animation: fadeUp .55s .26s ease both; }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="/" class="nav-home">Your Name</a>
+    <div class="nav-links">
+      <a href="/blog">blog</a>
+      <a href="/projects">projects</a>
+      <a href="/">home</a>
+    </div>
+  </nav>
+
+  <div class="page">
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <a href="/">home</a>
+      <span class="breadcrumb-sep">/</span>
+      <a href="/blog">blog</a>
+      <span class="breadcrumb-sep">/</span>
+      <span>Post Title</span>
+    </div>
+
+    <!-- Header -->
+    <header class="post-header">
+      <h1>Your Post Title Goes Here</h1>
+      <div class="post-meta">
+        <span>January 31, 2026</span>
+        <span class="post-meta-dot"></span>
+        <span>4 min read</span>
+      </div>
+    </header>
+
+    <!-- ── Section 1 ── -->
+    <div class="section">
+      <h2 class="section-title">Overview</h2>
+      <div class="post-body">
+        <p>Write your opening paragraph here. This is a clean, static HTML template styled with a thin, readable font and minimal visual noise — just your content, clearly presented.</p>
+        <p>Add as many paragraphs as you need. The layout stays out of your way.</p>
+      </div>
+    </div>
+
+    <!-- ── Section 2 ── -->
+    <div class="section">
+      <h2 class="section-title">Section Two</h2>
+      <div class="post-body">
+        <p>Each section is separated by a serif heading that feels editorial without being loud. The body text uses a light weight so longer reads feel effortless.</p>
+
+        <!-- Image / media block -->
+        <div class="showcase">
+          <img src="your-image.png" alt="Describe the image">
+          <p class="showcase-caption">A caption for your image, centered and subdued.</p>
+        </div>
+
+        <p>Continue writing after the image. Add links like <a href="#">this one</a>, or use <strong>bold</strong> or <em>italic</em> text for emphasis.</p>
+      </div>
+    </div>
+
+    <!-- ── Section 3 ── -->
+    <div class="section">
+      <h2 class="section-title">Section Three</h2>
+      <div class="post-body">
+        <p>You can include code blocks if needed:</p>
+        <pre><code>const greeting = "hello, world";
+console.log(greeting);</code></pre>
+        <p>Or inline code like <code>npm run dev</code> within a sentence.</p>
+        <ul>
+          <li>Bullet points work too</li>
+          <li>Keep them brief and purposeful</li>
+          <li>Don't over-list things that read better as prose</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ── Section 4 – Reflection / closing ── -->
+    <div class="section">
+      <h2 class="section-title">Reflection</h2>
+      <div class="post-body">
+        <p>Close out your post here. Summarize your thoughts, or leave the reader with something to think about.</p>
+        <p>The footer below is a placeholder — replace it with your own name, year, or links.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    © 2026 Your Name &nbsp;·&nbsp; <a href="/blog" style="color:inherit;text-decoration:none;">back to blog</a>
+  </footer>
+
+</body>
+</html>

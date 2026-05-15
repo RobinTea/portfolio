@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Tironia Keyboard — Robin Taing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fafaf8;
+      --surface: #f4f4f0;
+      --border: #e8e8e2;
+      --text: #31312d;
+      --muted: #797974;
+      --accent: #070707;
+      --link: #5a6e4a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: 17px;
+      line-height: 1.85;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Top bar ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 40px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── Page wrapper ── */
+    .page {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 120px 30px 100px;
+    }
+
+    /* ── Post header ── */
+    .post-header {
+      margin-bottom: 64px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .post-header h1 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(32px, 6vw, 52px);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 18px;
+    }
+
+    .post-meta {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--muted);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .post-meta-dot {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+
+    /* ── Body content ── */
+    .post-body { font-size: 17px; font-weight: 300; line-height: 1.85; color: var(--text); }
+
+    .post-body p { margin-bottom: 28px; }
+
+    .post-body strong { font-weight: 400; }
+    .post-body em { font-style: italic; }
+
+    .post-body a {
+      color: var(--link);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      transition: opacity .2s;
+    }
+    .post-body a:hover { opacity: .65; }
+
+    /* ── Section headings ── */
+    .section { margin-bottom: 60px; }
+
+    .section-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── Image showcase ── */
+    .showcase {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      margin: 32px 0;
+    }
+    .showcase img,
+    .showcase video {
+      width: 100%;
+      border-radius: 6px;
+      display: block;
+    }
+
+    .iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .showcase-caption {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      font-style: italic;
+      text-align: center;
+      margin-top: 12px;
+      line-height: 1.5;
+    }
+
+    /* ── Inline code ── */
+    code {
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-size: .85em;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    pre {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      overflow-x: auto;
+      margin: 28px 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    pre code { background: none; border: none; padding: 0; }
+
+    /* ── Lists ── */
+    .post-body ul, .post-body ol {
+      padding-left: 22px;
+      margin-bottom: 28px;
+    }
+    .post-body li { margin-bottom: 8px; }
+
+    /* ── Divider ── */
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 48px 0;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 40px 30px;
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--muted);
+      letter-spacing: .05em;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      nav { padding: 14px 20px; }
+      .page { padding: 100px 20px 80px; }
+      .nav-links { display: none; }
+    }
+
+    /* ── Fade-in on load ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .post-header { animation: fadeUp .55s ease both; }
+    .section:nth-child(1) { animation: fadeUp .55s .08s ease both; }
+    .section:nth-child(2) { animation: fadeUp .55s .14s ease both; }
+    .section:nth-child(3) { animation: fadeUp .55s .20s ease both; }
+    .section:nth-child(4) { animation: fadeUp .55s .26s ease both; }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+
+  <div class="page">
+
+    <!-- Header -->
+    <header class="post-header">
+      <h1>Tironia - A Custom Keyboard from Scratch</h1>
+      <div class="post-meta">
+        <span>March 21, 2026</span>
+        <span class="post-meta-dot"></span>
+        <span>4 min read</span>
+      </div>
+    </header>
+
+    <!-- ── Section 1 ── -->
+    <div class="section">
+      <h2 class="section-title">Intro</h2>
+      <div class="post-body">
+        <p>
+          Two collegues have the hobby of costumizing keyboards and one day they brought them with them. 
+          The sound it created tingled in the ear and for the first time I understood their passion.
+          But for me, it is a hobby that is still to expensive.
+        </p>
+        <p>
+          Until I stumbled upon a Video from Christian Selig who explained the process of building a custom keyboard, which seemed to be simple to me.
+          So I decided to give it a try.
+        </p>
+        <p>
+          Basically, it starts with a Battery which is connected to buttons which is connected to a computer. If a button is pressded it sends the coordinates like on a chess board
+          or the game sinking the ship. The computer then translates this coordinates into a predetermend symbol. 
+        </p>
+        <div class="showcase">
+          <iframe 
+            width="600"
+            height="300" 
+            src="https://www.youtube.com/embed/7UXsD7nSfDY" 
+            title="YouTube video player" 
+            frameborder="0"
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+
+          <p class="showcase-caption">Christian Selig's video that inspired this project</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">First Steps</h2>
+      <div class="post-body">
+        <p>
+          A project starts with finding your needs which narrows down the options, 101 of computer science. simple
+        </p>
+        <ul>
+          <li>hotswapable</li>
+          <li>convenient small size</li>
+          <li>wireless</li>
+          <li>split</li>
+          <li>thumb clusters</li>
+          <li>ortholinear</li>
+          <li>column staggered</li>
+        </ul>
+        <p>
+
+        </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Planing</h2>
+      <div class="post-body">
+        <p>
+          Now that we know  we want a split keyboard I started with a tool called ergogen. With a simple json-like syntax you are able to create a grid ressembling your keyboard. 
+          The posibilities are endless you can twist and turn them, but only in two dimensions. 
+          And because I wanted a more ergonomic design, I went with this. Of course the depends strongly on the wished layout  which defines the number of keys. 
+        </p>
+        <div class="showcase">
+          <img src="TironiaPic/ergogen.png" alt="Ergogen design">
+          <p class="showcase-caption">in Ergogen</p>
+        </div>
+        <p>
+          The rule of ergonomics states that your finger should not be moving further than a key away from its resting position or “home” row. And because my preferences were different from the creators online. 
+          My design started to look much more different than in the turorial. This leant that later, I had problems, that the creators did not have.
+        </p>
+        <div class="showcase">
+          <img src="TironiaPic/Layout.png" alt="Layout">
+          <p class="showcase-caption">Layout design</p>
+        </div>
+        <p>
+          The next step is to import what we did into an actual pcb design tool. I used Kicad because all of the tutorials and videos recommended it and already had step by step instructions. Even if it looked slightly different i found it easy to use and navigate. 
+        </p>
+        <div class="showcase">
+          <img src="TironiaPic/firstKicad.png" alt="First Kicad design">
+          <p class="showcase-caption">One of the first versions, with the components still missing and the controller on the back. The outline not defined yet.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">First signs of a beginner</h2>
+      <div class="post-body">
+        <p>
+          This was my first major project, outside of the overwatch of any expert from school. That is when i learned from my inexperience. Every time i wanted to change a position of fe a button, i went to kicad and imported it again wich took a very long time. 
+          I did not realise at the time that i could just edit them directly in kicad. 
+        </p>
+        <p>       
+          The only thing I think you cannot edit are the attributes of the different parts fe is the battery above or under the pcb or which type of microcontroller are you using. 
+          But that also meant I was not able to check if the attributes were right (which hunted me later).
+        </p>
+        <p>
+          Looking back i notice i was not patient enough. It was summer breaks at that time and i wanted to order the parts asap in order to be able to finish this project before the break ended. This led to multiple mistakes.
+        </p>
+        <div class="showcase">
+          <img src="TironiaPic/finalKicad.png" alt="Final Kicad design">
+          <p class="showcase-caption">This is Truce. <br> Truce because it should solve the conflicts I have had with the traditional layout.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Ordering</h2>
+      <div class="post-body">
+        <p>
+          The desicion was purely based on the price. I went with a chinese company called <a href="https://jlcpcb.com/" target="_blank">JLCPCB</a> which offered a discount for a first time customer for the pcb.
+          The parts were ordered from <a href="https://www.typeractive.xyz/" target="_blank">Typeractive</a>. I did not know at that time that they were based in the US, and with the new tariffs, costed 35% more than I expected. :)
+          <br>
+          The rest of the parts were ordered from <a href="https://www.amazon.de/" target="_blank">Amazon</a>. 
+        </p>
+        <div class="showcase">
+          <img src="TironiaPic/TruceBack.jpeg" alt="Final Kicad design">
+          <p class="showcase-caption">backside of Truce</p>
+        </div>
+        <div class="showcase">
+          <img src="TironiaPic/TruceHand.jpeg" alt="Final Kicad design">
+          <p class="showcase-caption">fitted nearly perfectly.</p>
+        </div>
+        <p>
+          Because of the discount, the pcb was cheaper than planned, and I allowed myself to design another one. :)
+        </p>
+        <div class="showcase">
+          <img src="TironiaPic/TironiaKicad.png" alt="Final Kicad design">
+          <p class="showcase-caption">This is Tironia. <br> You might have noticed, this is not a conventional keyboard, instead this is a Stenography keyboard.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Tironia and Stenography</h2>
+      <div class="post-body">
+        <p>
+          <a href="https://en.wikipedia.org/wiki/Stenography" target="_blank">Stenography</a> is a method of rapid writing using vowel sounds instead of individual letters. To achieve such speeds, multiple keys are pressed simultaneously. 
+          Professional stenographers can reach speeds of 200-300 words per minute which is basically the speed of talking. 
+          Which is why this method is used in court reporting and live captioning. It will one day probably be replaced by Audio recognition or similar. 
+          But for me this is a dream and a goal to reach nearly 3x speed of my current personal best of <strong>139 wpm</strong>.
+        </p>
+        <div class="showcase">
+          <iframe 
+            width="600"
+            height="300" 
+            src="https://www.youtube.com/embed/B27SOkWATmM" 
+            title="YouTube video player" 
+            frameborder="0"
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+
+          <p class="showcase-caption"> similar video that brought me the idea => exceeding my average of 90 words per minute on a normal keyboard.</p>
+        </div>
+        <p>
+          Looking at the video, I felt that this Keyboard was not that different from the one in the tutroial and it felt possible to create my own.
+        </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Assembly & Solder</h2>
+      <div class="post-body">
+        <p>
+          From here on, I started to learn more than any tutorial or school project could have teached me and is in my view the most valueable part of this project.
+          <br>
+          I have never soldered before. And I have never worked with such small components. So after watching a few videos and reading some guides, I felt ready to give it a try.
+        </p>
+        <p>
+          Starting was a good approach but What I lacked was controll. 
+        </p>
+        <div class="showcase">
+          <img src="TironiaPic/TruceMistake.jpeg" alt="Final Kicad design">
+          <p class="showcase-caption">The big Brackets over the hole make it possible to swap switches.</p>
+        </div>
+        <p>
+          If you looked closely at the picture you might have noticed that some brackets were soldered the opposite way, blocking the hole. When I soldered those, I thought it did not matter. Big mistake. 
+          if the brackets are in the wrong place the switches (buttons) will not fit which makes the keyboard unusable.
+        </p>
+        <p>
+          Now, I could have just desoldered them, but this was not the only flaw. 
+        </p>
+        <div class="showcase">
+          <img src="TironiaPic/TruceZoom.png" alt="Final Kicad design">
+          <p class="showcase-caption">the white square is where you insert the usb-c cable</p>
+        </div>
+        <p> 
+          There is no space. I can not physically fit the usb-c cable there. The compoments are in the way, there is no way to fit that there.
+        </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">The realization</h2>
+      <div class="post-body">
+        <p>
+          A bummer. Two mistakes in such a short time that costed me Truce and money. I hit a low and was majorly disappointed. 
+          But I was not ready to give up, because <em>I will never give up.</em> <!-- true shit -->
+        </p>
+        <p>
+          So I turned to my second PCB that I even more rushed than Truce. 
+          Even tough I spent more time on Truce, Tironia was a more simpler, non-split design with fewer chances to make errors.
+        </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Assembly Tironia</h2>
+      <div class="post-body">
+        <p>
+          Here we go again. Over 112 solderpoints in total. 
+          The brackets and the diods (allowing multiple keypresses at the same time) with each 2 contact points on the pcb and the microcontroller in the middle.
+        </p>
+        <div class="showcase">
+          <img src="TironiaPic/TironiaOut.jpeg" alt="Final Kicad design">
+          <p class="showcase-caption">Tironia with switches and keycaps</p>
+        </div>
+        <p>
+          It finaly felt like progress and this time I had more control over the process. Using the inexpierience as my teacher.
+        </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Firmware / ZMK</h2>
+      <div class="post-body">
+        <p>
+          The more interesting part. I have never worked with Keyboard firmware before. 
+          For Tironia I have decided to use <a href="https://zmk.dev/" target="_blank">ZMK</a> which supports wireless keyboards and was one of the only optinos if i did not want to code the firmware from zero.
+        </p>
+        <p>
+          I ran into several problems, like bluetooth not working, linking the pins of the microcontroller to the right keys, and the general configuration of the firmware that I sometimes had to just brute force until it worked.
+          This took me longer than expected because zmk looked different each time I worked on this project. Few months ago, it got a major overhaul and the documentation bring information for those who wanted to customize their Layout.
+          I got it to connect via bluetooth and right now I am working on the registration of the keys.
+        </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">AI</h2>
+      <div class="post-body">
+        <p>
+          <em>aaaaaaaah but you could have just used AI to generate the firmware for you. </em>
+        </p>
+        <p>
+          nope. AI had not enough trained data of this niche topic and ranted things that were not true which not was not helpful nor porfessional. So it was me and the docs.
+        </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">current status</h2>
+      <div class="post-body">
+        <p>
+          I might have found the problem with the key registration and I am currently testing it. 
+          When I press a key, it registers it but it is stuck on pressed and does not register the release of the key. Which led to this first Text that I "wrote" with Tironia:
+          <pre><code>qerftwrfttgtrtrwstsrstrebbbqaaaikololololololololololololololioikikniknikikikkkkujujujujjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjbuububuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuo</code></pre>
+          Worst case is that this is a hardware problem I have to order new parts ans solder them on one of my spare pcbs.
+          Why do I think this is a hardware problem?
+        </p>
+        <div class="showcase">
+          <img src="TironiaPic/diode-single_1100x.webp" alt="Diodes">
+          <p class="showcase-caption">This is a single diode, not bigger than half a cm. in length and barely 3mm in width</p>
+        </div>
+        <div class="showcase">
+          <img src="TironiaPic/Diods.png" alt="Diode schematic">
+          <p class="showcase-caption">flow of current through a diode</p>
+        </div>
+        <p>
+          As you can see it in the picture: This mm thin component has a specific direction for the current to flow which is marked by just barerly visible lines and a W1 as you can see in the top picture.
+          To identify it you need special alot of light. I reckon if it is in the wrong direction, the current can not flow and the key will be stuck on pressed.
+        </p>
+        <p>
+          <em>btw: No tutorial told me about this, I had to research possible problems myself, until I found out multiple months have passed. </em>
+        </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">What is the next step?</h2>
+      <div class="post-body">
+        <p>
+          The frustrating thing is neither side of the diode was working even after multiple desoldering and resoldering sessions. So I could try on or I could start with new fresh components which are 100% not damaged.
+        </p>
+        <p>
+          This summer 2026 will mark the 1 year anniversary of this project and I will do everything that it wont take another summer. :)
+        </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Reflection</h2>
+      <div class="post-body">
+        <p>
+          Mistakes were made that in my view should have been avoided with more caution but the high difficulty of this project lies exactly in the lack of help and interfeerence of third parties. 
+          I had to learn everything on my own and I had to find the solutions on my own. Which is fullfilling but also very frustrating at times.
+        </p>
+        <p>
+          A mix of desperation, determination, impatience and passion can sometimes lead to breakthroughs, but other times it can hinder progress.
+        </p>
+        <p>
+          If you had told my younger self about the sturggles, I would still have started.
+        </p>
+        <p>
+          The first step is the most important. If I made another keyboard, I would spend more time in the planing phase.
+        </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Thank you</h2>
+      <div class="post-body">
+        <p>
+          Christian Selig
+        </p>
+        <p>
+          Ben Vallack
+        </p>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2 class="section-title">Bonus errors</h2>
+      <div class="post-body">
+        <p>My mistakes were my only mentor and it fried one of my microcontrollers and bended the pin of another.</p>
+        <p>
+          A
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    © 2026 Robin Taing &nbsp;·&nbsp; <a href="/blog" style="color:inherit;text-decoration:none;">back to blog</a>
+  </footer>
+
+</body>
+</html>
